@@ -25,7 +25,7 @@ SECRET_KEY = 'pf*l+g9_rbjl5-)^1clzxgy1_g+)a(y7bo7exu4m7azt^m@8h%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.6','localhost','192.168.12.1']
 
 
 # Application definition
@@ -42,7 +42,14 @@ INSTALLED_APPS = [
     'api',
 ]
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +130,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+APPEND_SLASH=False
